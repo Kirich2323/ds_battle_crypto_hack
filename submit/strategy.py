@@ -18,13 +18,14 @@ class Strategy(ABC):
 
 
 class YourStrategy(Strategy):
-    required_rows = 2*24*60   # minutes of data to be fed to model.
+    required_rows = 34740  # minutes of data to be fed to model.
 
     def compute_target_position(self, current_data: pd.DataFrame, current_position: float) -> Optional[float]:
+
         avg_price = current_data['price'].mean()
+
         current_price = current_data['price'][-1]
 
-        target_position = current_position + (avg_price - current_price)/1000
+        target_position = current_position + (avg_price - current_price)/1200
 
         return target_position
-

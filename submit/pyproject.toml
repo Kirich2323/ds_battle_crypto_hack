@@ -1,12 +1,13 @@
 [tool.poetry]
-name = "hackathon_template"
+name = "hackathon_baseline_try"
 version = "0.1.0"
-description = ""
-authors = ["TomasRusy <tomas.rusy@terminus-research.com>"]
+description = "Inverse Mean with division by volume"
+authors = ["KirKirich <ivadik2323@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
 pandas = "^1.4.2"
+scikit-learn = "^1.1.1"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"

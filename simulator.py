@@ -26,12 +26,14 @@ class Simulator(object):
         except KeyError as e:
             raise ValueError("Date range does not fall within the supported range 01-01-2018 - 31-03-2022!") from e
 
-        for i in tqdm(range(start_index, end_index)):
-            timestamp = self.price_volume_data.index[i]
+        for i in range(start_index, end_index):
+            data = self.price_volume_data.iloc[i]
+            timestamp = data.index
+            
             current_data = self.price_volume_data.iloc[(i - self.rows_to_feed_to_model): i]
             current_position = 0.0 if not self.simulation_data else self.simulation_data['position'][-1]  # 0.0 if first
-            current_price = self.price_volume_data.iloc[i]['price']
-            current_volume = self.price_volume_data.iloc[i]['volume']
+            current_price = data['price']
+            current_volume = data['volume']
 
             target_position = self.model.compute_target_position(current_data, current_position)
 
